@@ -97,6 +97,9 @@
   .lp-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; display: flex; justify-content: center;
     padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: var(--navy-900); box-shadow: 0 -6px 20px rgba(13,32,54,0.25); }
   .lp-sticky .btn { justify-content: center; padding: 15px 10px; font-size: 1.05rem; width: 100%; max-width: 480px; }
+  .one-line { white-space: nowrap; font-size: clamp(0.9rem, 4.7vw, 2.4rem); }
+  .lp-sticky .btn { gap: 10px; align-items: center; }
+  .couch-icon { flex: none; }
 </style>
 </head>
 <body>
@@ -137,13 +140,13 @@
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Trusted By Dallas Homeowners</span>
-      <h2>5.0 Stars From 140 Google Reviews</h2>
+      <h2 class="one-line">5.0 Stars From 140 Google Reviews</h2>
     </div>
     <div class="review-grid">
       <figure class="review-card">
         <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>&ldquo;Rick and his team did an amazing job on my couch and the price was super reasonable.&rdquo;</blockquote>
-        <figcaption><span class="who">Google reviewer</span><a href="https://share.google/RymbL5lZ9qFQCQ7kK" target="_blank" rel="noopener">Read on Google &rarr;</a></figcaption>
+        <blockquote>&ldquo;We had a great experience with this company! Rick and Mike were the gentlemen who serviced our home, and they were both incredibly kind, thorough, and professional. They did an excellent job cleaning our couches and carpets, and everything turned out great. We would definitely recommend them and be using them again.&rdquo;</blockquote>
+        <figcaption><span class="who">Moyra S.</span><a href="https://share.google/c7MxhRSqpNNTfUIDp" target="_blank" rel="noopener">Read on Google &rarr;</a></figcaption>
       </figure>
       <figure class="review-card">
         <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
@@ -267,7 +270,7 @@
 </footer>
 
 <nav class="lp-sticky" aria-label="Text us">
-  <a href="sms:+14695621010?&amp;body=Hi%21%20I%27d%20like%20a%20sofa%20cleaning%20quote.%20Here%27s%20a%20photo%20of%20my%20couch%3A" class="btn btn-amber" data-conversion="text">Text a Photo of Your Couch</a>
+  <a href="sms:+14695621010?&amp;body=Hi%21%20I%27d%20like%20a%20sofa%20cleaning%20quote.%20Here%27s%20a%20photo%20of%20my%20couch%3A" class="btn btn-amber" data-conversion="text"><svg class="couch-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"/><path d="M3 13a2 2 0 0 1 4 0v1h10v-1a2 2 0 0 1 4 0v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M6 18v2M18 18v2"/></svg><span>Text a Photo of Your Couch</span></a>
 </nav>
 
 <script>
