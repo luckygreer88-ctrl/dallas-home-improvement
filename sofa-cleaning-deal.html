@@ -85,6 +85,9 @@
   .google-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);
     padding: 24px; text-align: center; max-width: 520px; margin: 0 auto; }
   .google-card .count { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; color: var(--navy-900); }
+  .stars-inline { color: var(--amber-500); letter-spacing: 1px; }
+  .google-stars { color: var(--amber-500); font-size: 1.6rem; letter-spacing: 3px; line-height: 1; margin-bottom: 6px; }
+  .google-card .sub-count { font-weight: 600; color: var(--navy-800); }
   .google-card p { color: var(--gray-500); margin: 6px 0 16px; }
 
   .lp-footer { background: var(--navy-900); color: rgba(255,255,255,0.7); font-size: 0.88rem; padding: 28px 0 110px; text-align: center; }
@@ -114,7 +117,7 @@
 <section class="lp-hero">
   <div class="container">
     <a class="lp-badge" href="https://share.google/x6kMAmXlLWoU6RTqe" target="_blank" rel="noopener">
-      <span class="g">Google</span> 140 reviews &middot; Read them &rarr;
+      <span class="stars-inline" aria-hidden="true">★★★★★</span> <strong>5.0</strong> on <span class="g">Google</span> &middot; 140 reviews &rarr;
     </a>
     <h1>Sofa Cleaning <span class="price">$99</span><br>Dallas–Fort Worth</h1>
     <p class="sub">Stains, pet odors and everyday grime lifted out with hot water extraction. Safe for kids and pets.</p>
@@ -187,10 +190,12 @@
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Trusted By Dallas Homeowners</span>
-      <h2>140 Reviews on Google</h2>
+      <h2>5.0 Stars From 140 Google Reviews</h2>
     </div>
     <div class="google-card">
-      <div class="count">140 Google reviews</div>
+      <div class="google-stars" aria-hidden="true">★★★★★</div>
+      <div class="count">5.0 on Google</div>
+      <div class="sub-count">140 reviews</div>
       <p>Read what your neighbors say about our crew.</p>
       <a href="https://share.google/x6kMAmXlLWoU6RTqe" target="_blank" rel="noopener" class="btn btn-outline-navy">Read Our Google Reviews</a>
     </div>
