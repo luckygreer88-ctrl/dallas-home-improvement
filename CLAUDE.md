@@ -18,7 +18,11 @@ Read this first in any new chat about this site or the owner's ads.
   `.html` (e.g. `/junk-removal`), and the sitemap uses those addresses.
 - Shared files: `css/style.css`, `js/main.js`, `images/`. Each page repeats its own header, footer and tracking
   code, so a change to any of those has to be made in **every** `.html` file.
-- When adding or renaming a page, update `sitemap.xml`.
+- When adding or renaming a page, update `sitemap.xml` (except ad landing pages, which stay out of it).
+- **Ad landing pages** (no menu, `noindex`, not in the sitemap, sticky Call / Text bar on phones):
+  - `/sofa-cleaning-deal`: Google Ads furniture campaign. Deal: $99 one sofa, $149 two sofas; a sectional counts
+    as 2. The Text button pre-fills a message asking for a couch photo. Google reviews (140) are linked, but no
+    quotes are shown yet: add only real reviews the owner pastes in.
 
 ## Hosting and publishing
 - **Netlify** project `resonant-kulfi-e58012` (team `luckygreer88`), linked to this GitHub repo.
