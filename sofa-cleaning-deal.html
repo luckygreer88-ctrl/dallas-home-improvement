@@ -31,6 +31,7 @@
     pixelId: "JgTd5JPQExATxXrxQ7gnjQ",
   });
 </script>
+<link rel="preload" as="image" href="images/furniture-header-900.webp" media="(max-width: 900px)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -152,6 +153,14 @@
 
   /* ---- Smaller before/after photos on phones: about 1.7 photos visible, swipe for more ---- */
   @media (max-width: 640px) { .gallery { scroll-padding: 0 24px; } .gallery-item { flex-basis: 58%; } }
+  /* Video placeholder until the player loads */
+  .yt-lazy img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .yt-lazy .yt-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(13,32,54,0.75); color: #f2a93b; display: flex; align-items: center; justify-content: center; padding-left: 4px; }
+  /* Smaller hero photo on phones (loads faster) */
+  @media (max-width: 900px) { .lp-hero { background:
+      linear-gradient(180deg, rgba(13,32,54,0.92) 0%, rgba(13,32,54,0.78) 38%, rgba(13,32,54,0.25) 62%, rgba(13,32,54,0.55) 100%),
+      url('images/furniture-header-900.webp') 80% 100% / cover; } }
 </style>
 </head>
 <body>
@@ -223,8 +232,10 @@
       <span class="eyebrow">Watch Us Work</span>
       <h2>Real Couch, Real Results</h2>
     </div>
-    <div class="video-wrap">
-      <iframe src="https://www.youtube-nocookie.com/embed/EKT_oNgM1DM?autoplay=1&amp;mute=1&amp;playsinline=1&amp;controls=0&amp;modestbranding=1&amp;rel=0&amp;disablekb=1&amp;fs=0&amp;iv_load_policy=3&amp;loop=1&amp;playlist=EKT_oNgM1DM&amp;enablejsapi=1" title="Couch cleaning by Dallas Home Improvement" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <!-- The YouTube player only loads when the visitor scrolls near it, so the top of the page loads fast. -->
+    <div class="video-wrap yt-lazy" data-src="https://www.youtube-nocookie.com/embed/EKT_oNgM1DM?autoplay=1&amp;mute=1&amp;playsinline=1&amp;controls=0&amp;modestbranding=1&amp;rel=0&amp;disablekb=1&amp;fs=0&amp;iv_load_policy=3&amp;loop=1&amp;playlist=EKT_oNgM1DM&amp;enablejsapi=1" data-title="Couch cleaning by Dallas Home Improvement">
+      <img src="https://i.ytimg.com/vi/EKT_oNgM1DM/hqdefault.jpg" alt="Couch cleaning video" loading="lazy" decoding="async">
+      <span class="yt-play" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
     </div>
   </div>
 </section>
@@ -341,6 +352,28 @@
       last = { name: name, time: now };
       oaiq("measure", "custom", { type: "custom" }, { custom_event_name: name });
     });
+  })();
+</script>
+<script>
+  // Load the YouTube player when the video is about to scroll into view (or right away if the browser can't tell).
+  (function () {
+    var boxes = document.querySelectorAll('.yt-lazy');
+    function load(box) {
+      if (box.getAttribute('data-loaded')) return;
+      box.setAttribute('data-loaded', '1');
+      var f = document.createElement('iframe');
+      f.src = box.getAttribute('data-src');
+      f.title = box.getAttribute('data-title') || 'Video';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.setAttribute('allowfullscreen', '');
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
+      box.appendChild(f);
+    }
+    if (!('IntersectionObserver' in window)) { boxes.forEach(load); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { load(e.target); io.unobserve(e.target); } });
+    }, { rootMargin: '300px 0px' });
+    boxes.forEach(function (b) { io.observe(b); b.addEventListener('click', function () { load(b); }); });
   })();
 </script>
 <script src="js/main.js"></script>
