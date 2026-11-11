@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="css/style.css">
 <style>
   /* ---- Ad landing page: no menu, one goal (call or text a photo) ---- */
-  .lp-header { background: var(--white); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 800; }
+  .lp-header { background: var(--navy-900); border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 800; }
   .lp-header .container { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; padding-bottom: 10px; }
   .lp-header img { height: 36px; width: auto; display: block; }
   .lp-header .btn { padding: 10px 16px; font-size: 0.92rem; white-space: nowrap; }
@@ -66,11 +66,8 @@
   .price-card.best { outline: 3px solid var(--amber-500); position: relative; }
   .price-card.best::before { content: 'Best deal'; position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
     background: var(--amber-500); color: var(--navy-900); font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
-  .price-fine { font-size: 0.86rem; color: rgba(255,255,255,0.75); margin: 8px 0 22px; text-align: center; }
+  .price-fine { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin: 10px 0 0; text-align: center; }
 
-  .lp-actions { display: grid; gap: 12px; }
-  .lp-actions .btn { width: 100%; justify-content: center; font-size: 1.05rem; padding: 16px 20px; }
-  .lp-actions .hint { text-align: center; font-size: 0.86rem; color: rgba(255,255,255,0.75); margin: -2px 0 0; }
 
   .lp-checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
   .lp-checks li { display: flex; gap: 10px; align-items: flex-start; }
@@ -96,24 +93,18 @@
   .lp-footer { background: var(--navy-900); color: rgba(255,255,255,0.7); font-size: 0.88rem; padding: 28px 0 110px; text-align: center; }
   .lp-footer a { color: rgba(255,255,255,0.85); }
 
-  /* Sticky Call / Text bar on phones (replaces the floating Text Us bubble here) */
-  .lp-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px;
-    padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: var(--white); box-shadow: 0 -6px 20px rgba(13,32,54,0.15); }
-  .lp-sticky .btn { justify-content: center; padding: 14px 10px; font-size: 1rem; width: 100%; }
-  @media (min-width: 900px) {
-    .lp-sticky { display: none; }
-    .lp-footer { padding-bottom: 28px; }
-    .lp-actions { grid-template-columns: 1.4fr 1fr; }
-    .lp-actions .hint { grid-column: 1 / -1; }
-  }
+  /* Floating "Text a Photo of Your Couch" bar, always at the bottom of the screen */
+  .lp-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; display: flex; justify-content: center;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: var(--navy-900); box-shadow: 0 -6px 20px rgba(13,32,54,0.25); }
+  .lp-sticky .btn { justify-content: center; padding: 15px 10px; font-size: 1.05rem; width: 100%; max-width: 480px; }
 </style>
 </head>
 <body>
 
 <header class="lp-header">
   <div class="container">
-    <img src="images/logo.png" alt="Dallas Home Improvement Cleaning Services" width="665" height="136">
-    <a href="tel:+14695621010" class="btn btn-primary" data-conversion="call">Call (469) 562-1010</a>
+    <img src="images/logo-light-gold.png" alt="Dallas Home Improvement Cleaning Services" width="665" height="136">
+    <a href="tel:+14695621010" class="btn btn-amber" data-conversion="call">Call (469) 562-1010</a>
   </div>
 </header>
 
@@ -137,13 +128,8 @@
         <div class="note">or 1 sectional</div>
       </div>
     </div>
-    <p class="price-fine">A sectional counts as 2 sofas.</p>
+    <p class="price-fine">A sectional counts as 2 sofas. Text us a photo and we'll confirm your price and a time.</p>
 
-    <div class="lp-actions">
-      <a href="sms:+14695621010?&amp;body=Hi%21%20I%27d%20like%20the%20%2499%20sofa%20cleaning%20deal.%20Here%27s%20a%20photo%20of%20my%20couch%3A" class="btn btn-amber" data-conversion="text">Text a Photo of Your Couch</a>
-      <a href="tel:+14695621010" class="btn btn-outline" data-conversion="call">Call (469) 562-1010</a>
-      <p class="hint">Snap a photo, text it to us, and we'll confirm your price and a time.</p>
-    </div>
   </div>
 </section>
 
@@ -265,7 +251,7 @@
         <p>Text a photo of your couch to (469) 562-1010.</p>
       </div>
       <div class="cta-actions">
-        <a href="sms:+14695621010?&amp;body=Hi%21%20I%27d%20like%20the%20%2499%20sofa%20cleaning%20deal.%20Here%27s%20a%20photo%20of%20my%20couch%3A" class="btn btn-amber" data-conversion="text">Text a Photo</a>
+        <a href="sms:+14695621010?&amp;body=Hi%21%20I%27d%20like%20a%20sofa%20cleaning%20quote.%20Here%27s%20a%20photo%20of%20my%20couch%3A" class="btn btn-amber" data-conversion="text">Text a Photo</a>
         <a href="tel:+14695621010" class="btn btn-outline" data-conversion="call">Call Now</a>
       </div>
     </div>
@@ -280,9 +266,8 @@
   </div>
 </footer>
 
-<nav class="lp-sticky" aria-label="Contact">
-  <a href="tel:+14695621010" class="btn btn-outline-navy" data-conversion="call">Call</a>
-  <a href="sms:+14695621010?&amp;body=Hi%21%20I%27d%20like%20the%20%2499%20sofa%20cleaning%20deal.%20Here%27s%20a%20photo%20of%20my%20couch%3A" class="btn btn-amber" data-conversion="text">Text a Photo</a>
+<nav class="lp-sticky" aria-label="Text us">
+  <a href="sms:+14695621010?&amp;body=Hi%21%20I%27d%20like%20a%20sofa%20cleaning%20quote.%20Here%27s%20a%20photo%20of%20my%20couch%3A" class="btn btn-amber" data-conversion="text">Text a Photo of Your Couch</a>
 </nav>
 
 <script>
