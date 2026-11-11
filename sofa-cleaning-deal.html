@@ -35,6 +35,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script>
+  // Preview styles for the price boxes and Text button: ?style=a, ?style=b or ?style=c
+  try { var st = (new URLSearchParams(location.search).get('style') || '').toLowerCase();
+    if (/^[abc]$/.test(st)) document.documentElement.classList.add('style-' + st); } catch (e) {}
+</script>
 <style>
   /* ---- Ad landing page: no menu, one goal (call or text a photo) ---- */
   .lp-header { background: var(--navy-900); border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 800; }
@@ -56,17 +61,30 @@
   .lp-badge { padding: 5px 14px 5px 5px; }
   .g-logo { width: 28px; height: 28px; border-radius: 50%; background: var(--white); display: inline-flex; align-items: center; justify-content: center; flex: none; }
   .g-logo svg { display: block; }
-  .lp-hero h1 { color: var(--white); font-size: clamp(1.9rem, 6.4vw, 3rem); line-height: 1.12; margin: 16px 0 10px; }
+  .lp-hero h1 { color: var(--white); font-size: clamp(2.2rem, 9vw, 3.4rem); line-height: 1.08; margin: 16px 0 12px; }
+
+  /* Gold "FREE ..." tag under the headline */
+  .free-tag { position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, #ffd98a 0%, #f2a93b 50%, #e5901f 100%); color: var(--navy-900);
+    font-weight: 700; font-size: 1.02rem; padding: 9px 16px 9px 12px; border-radius: 10px; margin: 0 0 16px;
+    box-shadow: 0 8px 22px rgba(242,169,59,0.35), inset 0 1px 0 rgba(255,255,255,0.5); transform: rotate(-1.5deg); }
+  .free-tag strong { font-weight: 900; letter-spacing: 0.04em; }
+  .free-tag svg { flex: none; }
+  .free-tag::after, .cta-float::after { content: ''; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.55), transparent); transform: skewX(-20deg);
+    animation: shine 3.6s ease-in-out infinite; pointer-events: none; }
+  @keyframes shine { 0%, 55% { left: -60%; } 85%, 100% { left: 130%; } }
   .lp-hero h1 .price { color: var(--amber-500); }
   .lp-hero .sub { color: rgba(255,255,255,0.86); font-size: 1.06rem; margin: 0 0 22px; }
 
   .price-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; }
   .price-card { background: var(--white); color: var(--navy-900); border-radius: var(--radius-md); padding: 16px 14px; text-align: center; box-shadow: var(--shadow-md); }
   .price-card .amt { font-family: var(--font-display); font-weight: 800; font-size: 2.3rem; line-height: 1; color: var(--navy-900); }
-  .price-card .what { font-weight: 700; margin-top: 6px; }
+  .price-card .pc-label { font-weight: 800; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 6px; }
+  .price-card .cur { font-size: 0.55em; vertical-align: 0.75em; margin-right: 1px; }
   .price-card .note { font-size: 0.84rem; color: var(--gray-500); margin-top: 2px; }
   .price-card.best { outline: 3px solid var(--amber-500); position: relative; }
-  .price-card.best::before { content: 'Best deal'; position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+  .pc-ribbon { position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
     background: var(--amber-500); color: var(--navy-900); font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
   .price-fine { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin: 10px 0 0; text-align: center; }
 
@@ -102,6 +120,70 @@
   .one-line { white-space: nowrap; font-size: clamp(0.9rem, 4.7vw, 2.4rem); }
   .lp-sticky .btn { gap: 10px; align-items: center; }
   .couch-icon { flex: none; }
+  .cta-float { position: relative; overflow: hidden; }
+  .cta-float::after { display: none; }
+  .cta-icon { display: inline-flex; }
+  .cta-sub, .cta-arrow { display: none; }
+
+  /* ===================== Style A: Gold Glow ===================== */
+  .style-a .price-card, .style-b .price-card { border-color: transparent; }
+  .style-a .price-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.18); color: var(--white);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: 0 10px 30px rgba(0,0,0,0.25); padding: 20px 12px 16px; }
+  .style-a .price-card .pc-label { color: rgba(255,255,255,0.75); }
+  .style-a .price-card .amt { font-size: 2.9rem; background: linear-gradient(180deg, #ffe3a3, #f2a93b 60%, #d98a1c);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .style-a .price-card .note { color: rgba(255,255,255,0.7); }
+  .style-a .price-card.best { outline: none; border: 2px solid #f2a93b; box-shadow: 0 0 0 4px rgba(242,169,59,0.15), 0 12px 34px rgba(242,169,59,0.25); }
+  .style-a .pc-ribbon { background: linear-gradient(135deg, #ffd98a, #f2a93b); box-shadow: 0 4px 12px rgba(242,169,59,0.4); padding: 3px 12px; }
+  .style-a .lp-sticky { background: transparent; box-shadow: none; padding-top: 0; pointer-events: none; }
+  .style-a .lp-sticky .btn { pointer-events: auto; border-radius: 999px; padding: 8px 10px 8px 8px; justify-content: flex-start;
+    background: linear-gradient(135deg, #ffd98a 0%, #f2a93b 50%, #e5901f 100%); color: var(--navy-900);
+    box-shadow: 0 10px 30px rgba(242,169,59,0.5), 0 2px 0 rgba(255,255,255,0.4) inset; }
+  .style-a .cta-float::after { display: block; }
+  .style-a .cta-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--navy-900); color: #f2a93b; align-items: center; justify-content: center; flex: none; }
+  .style-a .cta-text { flex: 1; text-align: left; font-weight: 800; }
+  .style-a .cta-arrow { display: inline-flex; width: 36px; height: 36px; border-radius: 50%; background: rgba(13,32,54,0.12); align-items: center; justify-content: center; flex: none; }
+
+  /* ===================== Style B: Coupon ===================== */
+  .style-b .price-card { --notch: var(--navy-800); border-radius: 14px; padding: 18px 12px 14px; border: 2px dashed rgba(13,32,54,0.25); outline: none;
+    background: radial-gradient(circle at 0 58%, var(--notch) 9px, transparent 10px), radial-gradient(circle at 100% 58%, var(--notch) 9px, transparent 10px), #fffaf0; }
+  .style-b .price-card .pc-label { color: var(--navy-800); border-bottom: 2px dashed rgba(13,32,54,0.18); padding-bottom: 8px; margin-bottom: 10px; }
+  .style-b .price-card .amt { font-size: 2.8rem; color: var(--navy-900); }
+  .style-b .price-card.best { background: radial-gradient(circle at 0 58%, var(--notch) 9px, transparent 10px), radial-gradient(circle at 100% 58%, var(--notch) 9px, transparent 10px), linear-gradient(160deg, #ffe3a3, #f2a93b);
+    border-color: rgba(13,32,54,0.35); transform: rotate(1deg); }
+  .style-b .price-card.best .note { color: var(--navy-800); }
+  .style-b .pc-ribbon { top: -13px; background: var(--navy-900); color: #f2a93b; border: 2px solid #f2a93b; }
+  .style-b .lp-sticky { background: rgba(13,32,54,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .style-b .lp-sticky .btn { background: var(--navy-800); color: var(--white); border: 2px solid #f2a93b; border-radius: 16px;
+    padding: 8px 12px 8px 8px; justify-content: flex-start; gap: 12px; box-shadow: 0 0 0 0 rgba(242,169,59,0.6); animation: ring 2.4s ease-out infinite; }
+  @keyframes ring { 0% { box-shadow: 0 0 0 0 rgba(242,169,59,0.55); } 70%, 100% { box-shadow: 0 0 0 12px rgba(242,169,59,0); } }
+  .style-b .cta-icon { width: 46px; height: 46px; border-radius: 12px; background: #f2a93b; color: var(--navy-900); align-items: center; justify-content: center; flex: none; }
+  .style-b .cta-text { display: flex; flex-direction: column; text-align: left; line-height: 1.2; flex: 1; }
+  .style-b .cta-main { font-weight: 800; }
+  .style-b .cta-sub { display: block; font-size: 0.8rem; font-weight: 600; color: #f2a93b; }
+  .style-b .cta-arrow { display: inline-flex; color: #f2a93b; }
+
+  /* ===================== Style C: Bold Sticker ===================== */
+  .style-c .price-cards { gap: 14px; align-items: end; }
+  .style-c .price-card { padding: 0 0 14px; overflow: visible; border-radius: 16px; outline: none; border: 0; }
+  .style-c .price-card.best { border: 3px solid #f2a93b; }
+  .style-c .price-card.best .pc-label { border-radius: 13px 13px 0 0; padding-right: 30px; }
+  .style-c .price-card .pc-label { background: var(--gray-100); color: var(--navy-800); margin: 0 0 10px; padding: 9px 0; border-radius: 16px 16px 0 0; font-size: 0.85rem; }
+  .style-c .price-card .amt { font-size: 3rem; letter-spacing: -0.02em; }
+  .style-c .price-card.best { transform: scale(1.05); box-shadow: 0 16px 36px rgba(0,0,0,0.35); }
+  .style-c .price-card.best .pc-label { background: linear-gradient(135deg, #ffd98a, #f2a93b); color: var(--navy-900); }
+  .style-c .pc-ribbon { top: -18px; left: auto; right: -10px; transform: rotate(12deg); width: 58px; height: 58px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; text-align: center; white-space: normal; line-height: 1.05; font-size: 0.68rem;
+    background: var(--navy-900); color: #f2a93b; border: 2px solid #f2a93b; padding: 0; box-shadow: 0 6px 14px rgba(0,0,0,0.3); }
+  .style-c .lp-sticky { background: var(--white); box-shadow: 0 -8px 24px rgba(13,32,54,0.2); border-radius: 20px 20px 0 0; }
+  .style-c .lp-sticky .btn { background: var(--navy-900); color: var(--white); border-radius: 14px; padding: 16px 14px; justify-content: space-between;
+    animation: nudge 4s ease-in-out infinite; }
+  @keyframes nudge { 0%, 88%, 100% { transform: translateY(0); } 92% { transform: translateY(-5px); } 96% { transform: translateY(0); } }
+  .style-c .cta-icon { color: #f2a93b; }
+  .style-c .cta-text { flex: 1; text-align: left; margin-left: 4px; }
+  .style-c .cta-arrow { display: inline-flex; width: 30px; height: 30px; border-radius: 50%; background: #f2a93b; color: var(--navy-900); align-items: center; justify-content: center; }
+
+  @media (prefers-reduced-motion: reduce) { .free-tag::after, .cta-float::after, .style-b .lp-sticky .btn, .style-c .lp-sticky .btn { animation: none; } }
 </style>
 </head>
 <body>
@@ -118,18 +200,20 @@
     <a class="lp-badge" href="https://share.google/x6kMAmXlLWoU6RTqe" target="_blank" rel="noopener">
       <span class="g-logo" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.5z"/></svg></span><span class="stars-inline" aria-hidden="true">★★★★★</span><span><strong>5.0</strong> &middot; 140 Google reviews &rarr;</span>
     </a>
-    <h1>Sofa Cleaning <span class="price">$99</span><br>Dallas–Fort Worth</h1>
+    <h1>Sofa Cleaning <span class="price">$99</span></h1>
+    <div class="free-tag"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><span><strong>FREE</strong> Fabric Protector Included</span></div>
     <p class="sub">Stains, pet odors and everyday grime lifted out with hot water extraction. Safe for kids and pets.</p>
 
     <div class="price-cards">
       <div class="price-card">
-        <div class="amt">$99</div>
-        <div class="what">1 sofa</div>
+        <div class="pc-label">1 Sofa</div>
+        <div class="amt"><span class="cur">$</span>99</div>
         <div class="note">Couch or loveseat</div>
       </div>
       <div class="price-card best">
-        <div class="amt">$149</div>
-        <div class="what">2 sofas</div>
+        <div class="pc-ribbon">Best value</div>
+        <div class="pc-label">2 Sofas</div>
+        <div class="amt"><span class="cur">$</span>149</div>
         <div class="note">or 1 sectional</div>
       </div>
     </div>
@@ -272,7 +356,7 @@
 </footer>
 
 <nav class="lp-sticky" aria-label="Text us">
-  <a href="sms:+14695621010?&amp;body=Hi%21%20I%27d%20like%20a%20sofa%20cleaning%20quote.%20Here%27s%20a%20photo%20of%20my%20couch%3A" class="btn btn-amber" data-conversion="text"><svg class="couch-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"/><path d="M3 13a2 2 0 0 1 4 0v1h10v-1a2 2 0 0 1 4 0v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M6 18v2M18 18v2"/></svg><span>Text a Photo of Your Couch</span></a>
+  <a href="sms:+14695621010?&amp;body=Hi%21%20I%27d%20like%20a%20sofa%20cleaning%20quote.%20Here%27s%20a%20photo%20of%20my%20couch%3A" class="btn btn-amber cta-float" data-conversion="text"><span class="cta-icon"><svg class="couch-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"/><path d="M3 13a2 2 0 0 1 4 0v1h10v-1a2 2 0 0 1 4 0v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M6 18v2M18 18v2"/></svg></span><span class="cta-text"><span class="cta-main">Text a Photo of Your Couch</span><span class="cta-sub">Free quote by text</span></span><span class="cta-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span></a>
 </nav>
 
 <script>
