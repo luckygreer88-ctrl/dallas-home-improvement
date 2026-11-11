@@ -82,14 +82,17 @@
   .lp-section .section-head { margin-bottom: 28px; }
   .lp-narrow { max-width: 760px; margin: 0 auto; }
 
-  .google-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);
-    padding: 24px; text-align: center; max-width: 520px; margin: 0 auto; }
-  .google-card .count { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; color: var(--navy-900); }
   .stars-inline { color: var(--amber-500); letter-spacing: 1px; }
-  .google-stars { color: var(--amber-500); font-size: 1.6rem; letter-spacing: 3px; line-height: 1; margin-bottom: 6px; }
-  .google-card .sub-count { font-weight: 600; color: var(--navy-800); }
-  .google-card p { color: var(--gray-500); margin: 6px 0 16px; }
 
+  .review-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 1000px; margin: 0 auto; }
+  .review-card { margin: 0; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);
+    padding: 20px; display: flex; flex-direction: column; }
+  .review-stars { color: var(--amber-500); letter-spacing: 2px; font-size: 1.05rem; margin-bottom: 8px; }
+  .review-card blockquote { margin: 0 0 14px; color: var(--navy-900); font-size: 1rem; line-height: 1.55; flex: 1; }
+  .review-card figcaption { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 0.9rem; }
+  .review-card .who { font-weight: 700; color: var(--navy-800); }
+  .review-card figcaption a { color: var(--teal-500); font-weight: 600; white-space: nowrap; }
+  .review-more { text-align: center; margin: 24px 0 0; }
   .lp-footer { background: var(--navy-900); color: rgba(255,255,255,0.7); font-size: 0.88rem; padding: 28px 0 110px; text-align: center; }
   .lp-footer a { color: rgba(255,255,255,0.85); }
 
@@ -144,6 +147,33 @@
   </div>
 </section>
 
+<section class="lp-section alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Trusted By Dallas Homeowners</span>
+      <h2>5.0 Stars From 140 Google Reviews</h2>
+    </div>
+    <div class="review-grid">
+      <figure class="review-card">
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>&ldquo;Rick and his team did an amazing job on my couch and the price was super reasonable.&rdquo;</blockquote>
+        <figcaption><span class="who">Google reviewer</span><a href="https://share.google/RymbL5lZ9qFQCQ7kK" target="_blank" rel="noopener">Read on Google &rarr;</a></figcaption>
+      </figure>
+      <figure class="review-card">
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>&ldquo;They always do a great job. We got our white couch &amp; a shag rug in our master bedroom cleaned. Highly recommended, just book them, you will not be disappointed!&rdquo;</blockquote>
+        <figcaption><span class="who">Nadia R.</span><a href="https://share.google/8OZICPbQyR389I68Q" target="_blank" rel="noopener">Read on Google &rarr;</a></figcaption>
+      </figure>
+      <figure class="review-card">
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>&ldquo;The best carpet and furniture cleaning I&rsquo;ve ever experienced&hellip; My carpets and furniture look refreshed and practically brand new!&rdquo;</blockquote>
+        <figcaption><span class="who">Kisha C.</span><a href="https://share.google/qcu2mqVJsppcNlYKY" target="_blank" rel="noopener">Read on Google &rarr;</a></figcaption>
+      </figure>
+    </div>
+    <p class="review-more"><a href="https://share.google/x6kMAmXlLWoU6RTqe" target="_blank" rel="noopener" class="btn btn-outline-navy">Read All 140 Google Reviews</a></p>
+  </div>
+</section>
+
 <section class="lp-section">
   <div class="container lp-narrow">
     <div class="section-head">
@@ -187,22 +217,6 @@
 </section>
 
 <section class="lp-section alt">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Trusted By Dallas Homeowners</span>
-      <h2>5.0 Stars From 140 Google Reviews</h2>
-    </div>
-    <div class="google-card">
-      <div class="google-stars" aria-hidden="true">★★★★★</div>
-      <div class="count">5.0 on Google</div>
-      <div class="sub-count">140 reviews</div>
-      <p>Read what your neighbors say about our crew.</p>
-      <a href="https://share.google/x6kMAmXlLWoU6RTqe" target="_blank" rel="noopener" class="btn btn-outline-navy">Read Our Google Reviews</a>
-    </div>
-  </div>
-</section>
-
-<section class="lp-section">
   <div class="container lp-narrow">
     <div class="section-head">
       <span class="eyebrow">Easy As 1-2-3</span>
@@ -216,7 +230,7 @@
   </div>
 </section>
 
-<section class="lp-section alt">
+<section class="lp-section">
   <div class="container lp-narrow">
     <div class="section-head">
       <span class="eyebrow">Questions</span>

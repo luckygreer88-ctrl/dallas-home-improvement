@@ -21,8 +21,8 @@ Read this first in any new chat about this site or the owner's ads.
 - When adding or renaming a page, update `sitemap.xml` (except ad landing pages, which stay out of it).
 - **Ad landing pages** (no menu, `noindex`, not in the sitemap, sticky Call / Text bar on phones):
   - `/sofa-cleaning-deal`: Google Ads furniture campaign. Deal: $99 one sofa, $149 two sofas; a sectional counts
-    as 2. The Text button pre-fills a message asking for a couch photo. Google rating 5.0 from 140 reviews (Nov 2026) is shown and linked, but no
-    quotes are shown yet: add only real reviews the owner pastes in.
+    as 2. The Text button pre-fills a message asking for a couch photo. Google rating 5.0 from 140 reviews (Nov 2026) is shown, plus 3 real Google review quotes (Nov 2026) each
+    linked to its review. Only ever use real reviews the owner sends.
 
 ## Hosting and publishing
 - **Netlify** project `resonant-kulfi-e58012` (team `luckygreer88`), linked to this GitHub repo.
