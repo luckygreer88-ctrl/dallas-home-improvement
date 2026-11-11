@@ -36,9 +36,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script>
-  // Preview styles: ?style=a|b|c, or two letters for price boxes + Text button (?style=cb = C boxes, B button)
+  // Preview styles: ?style=a|b|c, or two letters = price boxes (a-c) + Text button (a-g), e.g. ?style=cb
   try { var st = (new URLSearchParams(location.search).get('style') || '').toLowerCase();
-    if (/^[abc]{1,2}$/.test(st)) { var h = document.documentElement.classList;
+    if (/^[abc][a-g]?$/.test(st)) { var h = document.documentElement.classList;
       h.add('card-' + st[0]); h.add('btn-' + (st[1] || st[0])); } } catch (e) {}
 </script>
 <style>
@@ -185,6 +185,51 @@
   .btn-c .cta-arrow { display: inline-flex; width: 30px; height: 30px; border-radius: 50%; background: #f2a93b; color: var(--navy-900); align-items: center; justify-content: center; }
 
   @media (prefers-reduced-motion: reduce) { .free-tag::after, .cta-float::after, .btn-b .lp-sticky .btn, .btn-c .lp-sticky .btn { animation: none; } }
+
+  .cta-offer, .cta-short, .cam-badge { display: none; }
+
+  /* ===================== Button D: Chat Bubble (corner) ===================== */
+  .btn-d .lp-sticky { background: transparent; box-shadow: none; justify-content: flex-end; pointer-events: none; padding-right: 16px; }
+  .btn-d .lp-sticky .btn { pointer-events: auto; width: auto; border-radius: 26px 26px 6px 26px; padding: 8px 20px 8px 8px; gap: 10px;
+    background: linear-gradient(135deg, #ffd98a, #f2a93b 55%, #e5901f); color: var(--navy-900); font-weight: 800;
+    box-shadow: 0 12px 28px rgba(13,32,54,0.35), 0 0 0 0 rgba(242,169,59,0.6); animation: ring 2.4s ease-out infinite; }
+  .btn-d .cta-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--white); color: var(--navy-900); align-items: center; justify-content: center; }
+  .btn-d .cta-main { display: none; }
+  .btn-d .cta-short { display: inline; font-size: 1.05rem; }
+
+  /* ===================== Button E: Offer Bar ===================== */
+  .btn-e .lp-sticky { background: var(--navy-900); justify-content: space-between; align-items: center; gap: 12px; border-top: 2px solid #f2a93b; }
+  .btn-e .cta-offer { display: flex; flex-direction: column; color: var(--white); line-height: 1.2; font-size: 0.82rem; min-width: 0; }
+  .btn-e .cta-offer strong { font-family: var(--font-display); font-size: 0.98rem; color: #f2a93b; white-space: nowrap; }
+  .btn-e .cta-offer span { color: rgba(255,255,255,0.8); white-space: nowrap; }
+  .btn-e .lp-sticky .btn { width: auto; flex: none; border-radius: 12px; padding: 12px 16px; gap: 8px; font-weight: 800;
+    background: linear-gradient(135deg, #ffd98a, #f2a93b 55%, #e5901f); color: var(--navy-900); }
+  .btn-e .cta-icon svg { width: 22px; height: 22px; }
+  .btn-e .cta-main { display: none; }
+  .btn-e .cta-short { display: inline; }
+
+  /* ===================== Button F: Glass + Gold Ring ===================== */
+  .btn-f .lp-sticky { background: transparent; box-shadow: none; pointer-events: none; }
+  .btn-f .lp-sticky .btn { pointer-events: auto; border-radius: 999px; padding: 14px 18px; gap: 12px; color: var(--white); font-weight: 800;
+    background: linear-gradient(rgba(13,32,54,0.82), rgba(13,32,54,0.82)) padding-box, linear-gradient(135deg, #ffe3a3, #f2a93b, #c47a12, #ffe3a3) border-box;
+    border: 2px solid transparent; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+  .btn-f .cta-icon { color: #f2a93b; }
+  .btn-f .cta-main { background: linear-gradient(180deg, #fff, #ffe3a3); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* ===================== Button G: Gold Block + Camera ===================== */
+  .btn-g .lp-sticky { background: var(--white); box-shadow: 0 -8px 24px rgba(13,32,54,0.18); }
+  .btn-g .lp-sticky .btn { border-radius: 16px; padding: 10px 14px 10px 10px; justify-content: flex-start; gap: 14px;
+    background: linear-gradient(135deg, #ffd98a, #f2a93b 55%, #e5901f); color: var(--navy-900); box-shadow: 0 8px 20px rgba(242,169,59,0.45);
+    animation: nudge 4s ease-in-out infinite; }
+  .btn-g .cta-float::after { display: block; }
+  .btn-g .cta-icon { position: relative; width: 48px; height: 48px; border-radius: 14px; background: var(--navy-900); color: #f2a93b; align-items: center; justify-content: center; flex: none; }
+  .btn-g .cam-badge { display: flex; position: absolute; right: -6px; top: -6px; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--white); color: var(--navy-900); align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+  .btn-g .cta-text { display: flex; flex-direction: column; text-align: left; line-height: 1.2; flex: 1; }
+  .btn-g .cta-main { font-weight: 800; font-size: 1.05rem; }
+  .btn-g .cta-sub { display: block; font-size: 0.8rem; font-weight: 600; color: var(--navy-800); opacity: 0.85; }
+  .btn-g .cta-arrow { display: inline-flex; }
+  @media (prefers-reduced-motion: reduce) { .btn-d .lp-sticky .btn, .btn-g .lp-sticky .btn { animation: none; } }
 </style>
 </head>
 <body>
@@ -357,7 +402,8 @@
 </footer>
 
 <nav class="lp-sticky" aria-label="Text us">
-  <a href="sms:+14695621010?&amp;body=Hi%21%20I%27d%20like%20a%20sofa%20cleaning%20quote.%20Here%27s%20a%20photo%20of%20my%20couch%3A" class="btn btn-amber cta-float" data-conversion="text"><span class="cta-icon"><svg class="couch-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"/><path d="M3 13a2 2 0 0 1 4 0v1h10v-1a2 2 0 0 1 4 0v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M6 18v2M18 18v2"/></svg></span><span class="cta-text"><span class="cta-main">Text a Photo of Your Couch</span><span class="cta-sub">Free quote by text</span></span><span class="cta-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span></a>
+  <div class="cta-offer" aria-hidden="true"><strong>Sofa cleaning from $99</strong><span>+ FREE fabric protector</span></div>
+  <a href="sms:+14695621010?&amp;body=Hi%21%20I%27d%20like%20a%20sofa%20cleaning%20quote.%20Here%27s%20a%20photo%20of%20my%20couch%3A" class="btn btn-amber cta-float" data-conversion="text"><span class="cta-icon"><svg class="couch-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"/><path d="M3 13a2 2 0 0 1 4 0v1h10v-1a2 2 0 0 1 4 0v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M6 18v2M18 18v2"/></svg><span class="cam-badge" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg></span></span><span class="cta-text"><span class="cta-main">Text a Photo of Your Couch</span><span class="cta-short">Text a Photo</span><span class="cta-sub">Free quote by text</span></span><span class="cta-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span></a>
 </nav>
 
 <script>
