@@ -368,6 +368,19 @@
       f.setAttribute('allowfullscreen', '');
       f.referrerPolicy = 'strict-origin-when-cross-origin';
       box.appendChild(f);
+      // Backup for the loop: if YouTube reports the video ended (state 0), start it again from the beginning.
+      f.addEventListener('load', function () {
+        f.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'couch-video' }), '*');
+      });
+      window.addEventListener('message', function (e) {
+        if (e.source !== f.contentWindow) return;
+        var d; try { d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data; } catch (err) { return; }
+        var state = d && (d.event === 'onStateChange' ? d.info : (d.info && d.info.playerState));
+        if (state === 0) {
+          f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'seekTo', args: [0, true] }), '*');
+          f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*');
+        }
+      });
     }
     if (!('IntersectionObserver' in window)) { boxes.forEach(load); return; }
     var io = new IntersectionObserver(function (entries) {
