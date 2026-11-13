@@ -25,7 +25,7 @@ Read this first in any new chat about this site or the owner's ads.
     linked to its review. Only ever use real reviews the owner sends.
 
 ## Hosting and publishing
-- **Netlify free plan has a monthly publish limit.** Show the owner screenshots of options first and publish once per decision, not after every small tweak.
+- **Publishing uses Netlify credits.** The free plan ran out in Nov 2026 after ~22 publishes and deploys were paused; the owner then upgraded the Netlify plan. Still: show the owner screenshots of options first and publish once per decision, not after every small tweak. Deploys blocked while paused are not retried; a new push triggers one.
 - **Netlify** project `resonant-kulfi-e58012` (team `luckygreer88`), linked to this GitHub repo.
 - **Pushing to `main` publishes the live site** within about a minute. Nothing else is needed.
 - `netlify.toml` publishes the repo root with no build command. `_redirects` hides CLAUDE.md, README.md and
