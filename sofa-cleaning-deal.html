@@ -36,6 +36,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script>
+  // Preview the Scotchgard bottle on the FREE tag: ?tag=1, ?tag=2 or ?tag=3
+  try { var tv = new URLSearchParams(location.search).get('tag');
+    if (/^[123]$/.test(tv || '')) document.documentElement.classList.add('tag-' + tv); } catch (e) {}
+</script>
 <style>
   /* ---- Ad landing page: no menu, one goal (call or text us) ---- */
   .lp-header { background: var(--navy-900); border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 800; }
@@ -167,6 +172,28 @@
   @media (max-width: 900px) { .lp-hero { background:
       linear-gradient(180deg, rgba(13,32,54,0.92) 0%, rgba(13,32,54,0.78) 38%, rgba(13,32,54,0.25) 62%, rgba(13,32,54,0.55) 100%),
       url('images/furniture-header-900.webp') 80% 100% / cover; } }
+
+  /* ---- Scotchgard bottle on the FREE tag (preview options) ---- */
+  .free-wrap { position: relative; display: inline-block; margin: 0 0 16px; }
+  .free-wrap .free-tag { margin: 0; }
+  .sg-bottle { display: none; height: auto; filter: drop-shadow(0 6px 10px rgba(0,0,0,0.35)); animation: sgpulse 1.8s ease-in-out infinite; }
+  @keyframes sgpulse { 0%, 100% { transform: var(--sg-base, none) scale(1); } 50% { transform: var(--sg-base, none) scale(1.08); } }
+  /* 1: small bottle inside the tag, in place of the shield */
+  .tag-1 .free-tag > svg { display: none; }
+  .tag-1 .sg-bottle { display: block; position: absolute; left: 10px; top: 50%; width: 21px; --sg-base: translateY(-50%) rotate(-1.5deg); z-index: 2; }
+  .tag-1 .free-tag { padding-left: 40px; }
+  /* 2: bigger bottle popping out of the right end of the tag */
+  .tag-2 .free-wrap { margin-top: 10px; }
+  .tag-2 .free-tag { padding-right: 46px; }
+  .tag-2 .sg-bottle { display: block; position: absolute; right: -4px; bottom: -12px; width: 27px; --sg-base: rotate(12deg); z-index: 2; transform-origin: bottom center; }
+  /* 3: bottle standing next to the tag in a glowing circle */
+  .tag-3 .free-wrap { display: inline-flex; align-items: center; gap: 12px; }
+  .tag-3 .free-tag > svg { display: none; }
+  .tag-3 .sg-bottle { display: block; width: 30px; flex: none; filter: drop-shadow(0 0 10px rgba(242,169,59,0.7)) drop-shadow(0 6px 10px rgba(0,0,0,0.35)); }
+  .tag-3 .free-tag { padding: 8px 18px; line-height: 1.15; }
+  .tag-3 .free-tag > span { display: flex; flex-direction: column; }
+  .tag-3 .free-tag strong { font-size: 1.45rem; }
+  @media (prefers-reduced-motion: reduce) { .sg-bottle { animation: none; } }
 </style>
 </head>
 <body>
@@ -184,7 +211,10 @@
       <span class="g-logo" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.5z"/></svg></span><span class="stars-inline" aria-hidden="true">★★★★★</span><span><strong>5.0</strong> &middot; 140 Google reviews &rarr;</span>
     </a>
     <h1>Sofa Cleaning <span class="price">$99</span></h1>
-    <div class="free-tag"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><span><strong>FREE</strong> Fabric Protector Included</span></div>
+    <div class="free-wrap">
+      <img class="sg-bottle" src="images/scotchgard-bottle.png" alt="Scotchgard fabric protector" width="121" height="360">
+      <div class="free-tag"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><span><strong>FREE</strong> Fabric Protector Included</span></div>
+    </div>
     <p class="sub">Stains, pet odors and everyday grime lifted out with hot water extraction. Safe for kids and pets.</p>
 
     <div class="price-cards">
