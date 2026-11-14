@@ -442,6 +442,42 @@
     boxes.forEach(function (b) { io.observe(b); b.addEventListener('click', function () { load(b); }); });
   })();
 </script>
+<!-- Netlify Forms: each tap on a Call or Text button is sent here, and Netlify emails the owner.
+     The form is never shown; Netlify finds it when the site is published (Forms > form detection must be on). -->
+<form name="button-tap" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="button-tap">
+  <input name="bot-field">
+  <input name="action"><input name="button"><input name="page"><input name="from_google_ads"><input name="time_dallas">
+</form>
+<script>
+  // Send a short note to Netlify Forms when someone taps Call or Text (does not slow the tap down).
+  (function () {
+    var last = 0;
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href^="tel:"], a[href^="sms:"]');
+      if (!link) return;
+      var now = Date.now(); if (now - last < 3000) return; last = now;
+      var isCall = link.getAttribute('href').indexOf('tel:') === 0;
+      var where = link.closest('.lp-header') ? 'Top bar' : link.closest('.lp-sticky') ? 'Floating bottom button'
+        : link.closest('.cta-banner') ? 'Navy box near the bottom' : link.closest('.lp-footer') ? 'Footer' : 'Page';
+      var q = location.search;
+      var data = new URLSearchParams({
+        'form-name': 'button-tap',
+        action: isCall ? 'Call tapped' : 'Text tapped',
+        button: where,
+        page: location.pathname,
+        from_google_ads: /[?&](gclid|gbraid|wbraid)=/.test(q) || /utm_source=google/i.test(q) ? 'Yes' : 'Not sure',
+        time_dallas: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })
+      });
+      try {
+        var blob = new Blob([data.toString()], { type: 'application/x-www-form-urlencoded' });
+        if (!(navigator.sendBeacon && navigator.sendBeacon('/', blob))) {
+          fetch('/', { method: 'POST', body: data, keepalive: true, headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+        }
+      } catch (err) {}
+    });
+  })();
+</script>
 <script src="js/main.js"></script>
 </body>
 </html>
