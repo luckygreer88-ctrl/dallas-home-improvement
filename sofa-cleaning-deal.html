@@ -37,9 +37,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script>
-  // Preview review heading options: ?rv=1 ... ?rv=10
+  // Preview review heading options: ?rv=1 ... ?rv=11
   try { var rv = new URLSearchParams(location.search).get('rv');
-    if (/^([1-9]|10)$/.test(rv || '')) document.documentElement.classList.add('rv-' + rv); } catch (e) {}
+    if (/^([1-9]|1[01])$/.test(rv || '')) document.documentElement.classList.add('rv-' + rv); } catch (e) {}
 </script>
 <style>
   /* ---- Ad landing page: no menu, one goal (call or text us) ---- */
@@ -320,6 +320,15 @@
     .lp-header img { height: 29px; }
     .lp-header .hdr-call { font-size: 0.7rem; padding: 4px 9px 4px 4px; gap: 5px; }
   }
+
+  /* 11: one line "Real reviews from Google customers" with the G */
+  .rvh-real { display: none; }
+  .rv-11 .rv-head { gap: 8px; }
+  .rv-11 .rvh-g { width: 26px; height: 26px; }
+  .rv-11 .rvh-word, .rv-11 .rvh-line, .rv-11 .rvh-count { display: none; }
+  .rv-11 .rvh-real { display: block; white-space: nowrap; font-family: var(--font-display); font-weight: 700; color: var(--navy-900);
+    font-size: clamp(0.86rem, 4.35vw, 1.5rem); }
+  .rv-11 .rvh-real .gw b { font-weight: 800; }
 </style>
 </head>
 <body>
@@ -375,6 +384,7 @@
         <span class="rvh-excellent">Excellent</span>
         <span class="rvh-line"><span class="rvh-score">5.0</span><span class="rvh-stars" aria-hidden="true">★★★★★</span></span>
         <span class="rvh-count">Based on 140 reviews</span>
+        <span class="rvh-real">Real reviews from <span class="gw"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span> customers</span>
       </span>
       <svg class="laurel laurel-r" viewBox="0 0 40 80" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M30 76C12 64 6 42 14 6"/></g><g fill="currentColor"><ellipse cx="13" cy="14" rx="4" ry="8" transform="rotate(-20 13 14)"/><ellipse cx="10" cy="28" rx="4" ry="8" transform="rotate(-35 10 28)"/><ellipse cx="11" cy="43" rx="4" ry="8" transform="rotate(-50 11 43)"/><ellipse cx="16" cy="57" rx="4" ry="8" transform="rotate(-65 16 57)"/><ellipse cx="24" cy="69" rx="4" ry="7.5" transform="rotate(-80 24 69)"/><ellipse cx="22" cy="20" rx="3.5" ry="7" transform="rotate(25 22 20)"/><ellipse cx="21" cy="36" rx="3.5" ry="7" transform="rotate(15 21 36)"/><ellipse cx="24" cy="51" rx="3.5" ry="7" transform="rotate(0 24 51)"/></g></svg>
     </a>
