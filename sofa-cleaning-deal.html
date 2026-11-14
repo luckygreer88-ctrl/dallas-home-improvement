@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js): Google Ads account AW-18533660310 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18533660310"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18533660310');
+</script>
 <title>$129 Sofa Cleaning in Dallas–Fort Worth | Dallas Home Improvement</title>
 <meta name="description" content="Sofa cleaning deal in Dallas–Fort Worth: $129 for one sofa, $199 for two (a sectional counts as two). Hot water extraction, pet-safe. Call or text 469-562-1010 for a free quote.">
 <!-- Ad landing page: kept out of Google search results so it doesn't compete with /furniture-cleaning. Ads still work. -->
@@ -478,6 +486,8 @@
       var link = e.target.closest('a[href^="tel:"], a[href^="sms:"]');
       if (!link) return;
       var now = Date.now(); if (now - last < 3000) return; last = now;
+      // Google Ads conversion: "Call or text tap"
+      try { if (window.gtag) gtag('event', 'conversion', { send_to: 'AW-18533660310/lXVOCM7kvrgdEJbtxIVF' }); } catch (err) {}
       var isCall = link.getAttribute('href').indexOf('tel:') === 0;
       var where = link.closest('.lp-header') ? 'Top bar' : link.closest('.lp-sticky') ? 'Floating bottom button'
         : link.closest('.cta-banner') ? 'Navy box near the bottom' : link.closest('.lp-footer') ? 'Footer' : 'Page';

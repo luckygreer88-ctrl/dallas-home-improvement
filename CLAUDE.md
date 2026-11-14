@@ -37,8 +37,10 @@ Read this first in any new chat about this site or the owner's ads.
 ## Tracking and ads
 - On every page: the **ChatGPT (OpenAI) ads pixel** `JgTd5JPQExATxXrxQ7gnjQ`.
 - **Tap alerts (sofa page):** every tap on a Call or Text button on `/sofa-cleaning-deal` posts a hidden Netlify form `button-tap` (action, which button, from Google Ads yes/not sure, Dallas time); Netlify emails it to the owner. Needs Netlify Forms > form detection ON and an email notification on that form. A tap is not a connected call.
-- **Not installed yet:** Meta (Facebook) Pixel, Google Ads / Google Analytics tag. Add these if running
-  Facebook or Google ads to this site, so calls and texts from ads can be counted.
+- **Google Ads (sofa page only):** Google tag `AW-18533660310` in the `<head>` of `/sofa-cleaning-deal`; every Call/Text tap
+  fires the conversion "Call or text tap" (`send_to: AW-18533660310/lXVOCM7kvrgdEJbtxIVF`) inside the same click handler as
+  the Netlify tap alert. Campaign "Sofa Cleaning – DFW" (Search, exact match, 30 mi around Dallas, $35/day, launched Nov 2026).
+- **Not installed yet:** Meta (Facebook) Pixel; Google tag on the other pages.
 - Facebook ads run from the "Dallas Home Improvement" Facebook page.
 
 ## Related projects (same owner, separate repos)
