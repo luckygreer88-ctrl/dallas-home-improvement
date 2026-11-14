@@ -37,9 +37,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script>
-  // Preview review heading options: ?rv=1 ... ?rv=5
+  // Preview review heading options: ?rv=1 ... ?rv=10
   try { var rv = new URLSearchParams(location.search).get('rv');
-    if (/^[1-5]$/.test(rv || '')) document.documentElement.classList.add('rv-' + rv); } catch (e) {}
+    if (/^([1-9]|10)$/.test(rv || '')) document.documentElement.classList.add('rv-' + rv); } catch (e) {}
 </script>
 <style>
   /* ---- Ad landing page: no menu, one goal (call or text us) ---- */
@@ -249,6 +249,77 @@
   .rv-5 .rvh-line { flex-direction: column; gap: 0; }
   .rv-5 .rvh-score { font-size: 2.6rem; line-height: 1; }
   .rv-5 .rvh-count { order: 4; }
+
+  /* ===== One-line review headings (6-10) ===== */
+  .rv-6 .rvh-body, .rv-7 .rvh-body, .rv-8 .rvh-body, .rv-9 .rvh-body, .rv-10 .rvh-body { flex-direction: row; align-items: center; gap: 8px; white-space: nowrap; }
+  /* 6: plain line: G 5.0 stars · 140 Google reviews */
+  .rv-6 .rv-head { gap: 8px; }
+  .rv-6 .rvh-g { width: 28px; height: 28px; }
+  .rv-6 .rvh-word { display: none; }
+  .rv-6 .rvh-line { gap: 6px; }
+  .rv-6 .rvh-score { font-size: 1.3rem; }
+  .rv-6 .rvh-stars { font-size: 1.05rem; letter-spacing: 1px; }
+  .rv-6 .rvh-count { font-size: 0; }
+  .rv-6 .rvh-count::after { content: '· 140 Google reviews'; font-size: 0.92rem; color: var(--navy-800); font-weight: 700; }
+  /* 7: white pill with dividers: G Google | 5.0 stars | 140 reviews */
+  .rv-7 .rv-head { background: #fff; border: 1px solid var(--gray-200); border-radius: 999px; padding: 8px 16px 8px 10px; width: fit-content; gap: 8px;
+    box-shadow: 0 8px 22px rgba(13,32,54,0.1); }
+  .rv-7 .rvh-g { width: 24px; height: 24px; }
+  .rv-7 .rvh-reviews { display: none; }
+  .rv-7 .rvh-word { font-size: 1.05rem; padding-right: 10px; border-right: 1px solid var(--gray-200); }
+  .rv-7 .rvh-score { font-size: 1.1rem; }
+  .rv-7 .rvh-stars { font-size: 0.95rem; letter-spacing: 1px; }
+  .rv-7 .rvh-line { gap: 5px; padding-right: 10px; border-right: 1px solid var(--gray-200); }
+  .rv-7 .rvh-count { font-size: 0; }
+  .rv-7 .rvh-count::after { content: '140 reviews'; font-size: 0.82rem; }
+  /* 8: navy pill on one line */
+  .rv-8 .rv-head { background: var(--navy-900); border-radius: 999px; padding: 7px 18px 7px 7px; width: fit-content; gap: 10px; box-shadow: 0 8px 22px rgba(13,32,54,0.25); }
+  .rv-8 .rvh-g { width: 34px; height: 34px; background: #fff; border-radius: 50%; padding: 6px; box-sizing: border-box; }
+  .rv-8 .rvh-word { display: none; }
+  .rv-8 .rvh-score { color: #fff; font-size: 1.2rem; }
+  .rv-8 .rvh-stars { color: #f2a93b; font-size: 1rem; letter-spacing: 1px; }
+  .rv-8 .rvh-count { font-size: 0; }
+  .rv-8 .rvh-count::after { content: '140 Google reviews'; font-size: 0.84rem; color: rgba(255,255,255,0.8); }
+  /* 9: sentence style: Rated 5.0 stars on G Google */
+  .rv-9 .rv-head { gap: 0; }
+  .rv-9 .rvh-g { display: none; }
+  .rv-9 .rvh-line { order: 1; gap: 6px; }
+  .rv-9 .rvh-line::before { content: 'Rated'; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--navy-900); }
+  .rv-9 .rvh-score { font-size: 1.25rem; }
+  .rv-9 .rvh-stars { font-size: 1.05rem; letter-spacing: 1px; }
+  .rv-9 .rvh-word { order: 2; font-size: 1.25rem; font-weight: 800; }
+  .rv-9 .rvh-word::before { content: 'on '; color: var(--navy-900); font-weight: 700; font-size: 1.1rem; }
+  .rv-9 .gw b { font-weight: 800; }
+  .rv-9 .rvh-reviews, .rv-9 .rvh-count { display: none; }
+  /* 10: Google Reviews heading with gold rules on both sides */
+  .rv-10 .rv-head { gap: 12px; }
+  .rv-10 .rv-head::before, .rv-10 .rv-head::after { content: ''; flex: 1; max-width: 40px; height: 2px; background: linear-gradient(90deg, transparent, #f2a93b); }
+  .rv-10 .rv-head::after { background: linear-gradient(90deg, #f2a93b, transparent); }
+  .rv-10 .rvh-g { display: none; }
+  .rv-10 .rvh-word { font-size: 1.3rem; font-weight: 800; }
+  .rv-10 .gw b { font-weight: 800; }
+  .rv-10 .rvh-line { gap: 5px; }
+  .rv-10 .rvh-score { font-size: 1.3rem; }
+  .rv-10 .rvh-stars { font-size: 1rem; letter-spacing: 1px; }
+  .rv-10 .rvh-count { display: none; }
+  @media (max-width: 370px) {
+    .rv-6 .rv-head, .rv-7 .rv-head, .rv-8 .rv-head, .rv-9 .rv-head, .rv-10 .rv-head { gap: 6px; }
+    .rv-6 .rvh-body, .rv-7 .rvh-body, .rv-8 .rvh-body, .rv-9 .rvh-body, .rv-10 .rvh-body { gap: 5px; }
+    .rv-6 .rvh-score, .rv-8 .rvh-score, .rv-9 .rvh-score, .rv-10 .rvh-score, .rv-7 .rvh-score { font-size: 1.02rem; }
+    .rv-6 .rvh-stars, .rv-7 .rvh-stars, .rv-8 .rvh-stars, .rv-9 .rvh-stars, .rv-10 .rvh-stars { font-size: 0.8rem; letter-spacing: 0; }
+    .rv-6 .rvh-count::after { font-size: 0.8rem; }
+    .rv-7 .rv-head { padding: 7px 12px 7px 8px; } .rv-7 .rvh-word { font-size: 0.92rem; padding-right: 6px; } .rv-7 .rvh-line { padding-right: 6px; }
+    .rv-7 .rvh-count::after { font-size: 0.74rem; } .rv-7 .rvh-g { width: 20px; height: 20px; }
+    .rv-8 .rv-head { padding: 6px 12px 6px 6px; } .rv-8 .rvh-g { width: 28px; height: 28px; padding: 5px; } .rv-8 .rvh-count::after { content: '140 reviews'; font-size: 0.76rem; }
+    .rv-9 .rvh-line::before { font-size: 0.95rem; } .rv-9 .rvh-word { font-size: 1.02rem; } .rv-9 .rvh-word::before { font-size: 0.92rem; }
+    .rv-10 .rvh-word { font-size: 1.05rem; } .rv-10 .rv-head::before, .rv-10 .rv-head::after { max-width: 16px; }
+  }
+  /* Smallest phones (iPhone SE/mini): keep the logo and Call button on one row without overflowing */
+  @media (max-width: 370px) {
+    .lp-header .container { padding-left: 14px; padding-right: 14px; gap: 8px; }
+    .lp-header img { height: 29px; }
+    .lp-header .hdr-call { font-size: 0.7rem; padding: 4px 9px 4px 4px; gap: 5px; }
+  }
 </style>
 </head>
 <body>
