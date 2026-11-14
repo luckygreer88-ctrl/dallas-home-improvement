@@ -36,11 +36,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<script>
-  // Preview review heading options: ?rv=1 ... ?rv=17
-  try { var rv = new URLSearchParams(location.search).get('rv');
-    if (/^([1-9]|1[0-7])$/.test(rv || '')) document.documentElement.classList.add('rv-' + rv); } catch (e) {}
-</script>
 <style>
   /* ---- Ad landing page: no menu, one goal (call or text us) ---- */
   .lp-header { background: var(--navy-900); border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 800; }
@@ -200,120 +195,16 @@
   .hc-icon svg { width: 11px; height: 11px; }
   .hc-label { display: none; }
 
-  /* ---- Google review heading (preview options ?rv=1-5; default keeps the old heading) ---- */
-  .rv-head { display: none; text-decoration: none; color: var(--navy-900); }
-  [class*="rv-"] .sh-old { display: none; }
-  [class*="rv-"] .rv-head { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 0 auto 26px; }
-  .rv-head .laurel, .rvh-excellent { display: none; }
-  .rvh-g { display: inline-flex; width: 40px; height: 40px; flex: none; }
-  .rvh-body { display: flex; flex-direction: column; line-height: 1.15; }
-  .rvh-word { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: var(--navy-900); }
-  .gw b { font-weight: 700; }
-  .rvh-line { display: flex; align-items: center; gap: 8px; }
-  .rvh-score { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; color: var(--navy-900); }
-  .rvh-stars { color: #FBBC05; font-size: 1.15rem; letter-spacing: 2px; }
-  .rvh-count { font-size: 0.85rem; color: var(--gray-500); font-weight: 600; }
-  /* 1: Google-style rating card */
-  .rv-1 .rv-head { background: #fff; border: 1px solid var(--gray-200); border-radius: 16px; padding: 16px 20px; max-width: 340px;
-    box-shadow: 0 10px 28px rgba(13,32,54,0.1); justify-content: flex-start; }
-  .rv-1 .rvh-g { width: 46px; height: 46px; }
-  /* 2: big and centered, stacked */
-  .rv-2 .rv-head { flex-direction: column; gap: 6px; text-align: center; }
-  .rv-2 .rvh-g { width: 52px; height: 52px; }
-  .rv-2 .rvh-body { align-items: center; gap: 4px; }
-  .rv-2 .rvh-word { font-size: 1.45rem; }
-  .rv-2 .rvh-score { font-size: 2.4rem; }
-  .rv-2 .rvh-stars { font-size: 1.6rem; }
-  /* 3: navy badge pill with "Excellent" */
-  .rv-3 .rv-head { background: var(--navy-900); color: #fff; border-radius: 999px; padding: 10px 22px 10px 10px; width: fit-content; max-width: 100%;
-    box-shadow: 0 10px 26px rgba(13,32,54,0.25); }
-  .rv-3 .rvh-g { width: 44px; height: 44px; background: #fff; border-radius: 50%; padding: 8px; box-sizing: border-box; }
-  .rv-3 .rvh-word, .rv-3 .rvh-count { display: none; }
-  .rv-3 .rvh-excellent { display: block; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: #f2a93b; }
-  .rv-3 .rvh-score { color: #fff; font-size: 1.35rem; }
-  .rv-3 .rvh-line::after { content: '140 reviews'; font-size: 0.85rem; color: rgba(255,255,255,0.75); font-weight: 600; margin-left: 2px; }
-  /* 4: "Google Reviews" in Google's colors, big */
-  .rv-4 .rv-head { flex-direction: column; gap: 4px; text-align: center; }
-  .rv-4 .rvh-g { display: none; }
-  .rv-4 .rvh-body { align-items: center; gap: 6px; }
-  .rv-4 .rvh-word { font-size: 2rem; font-weight: 800; letter-spacing: -0.01em; }
-  .rv-4 .gw b { font-weight: 800; }
-  .rv-4 .rvh-reviews { color: var(--navy-900); }
-  /* 5: award style with gold laurels around 5.0 */
-  .rv-5 .rv-head { gap: 8px; }
-  .rv-5 .laurel { display: block; width: 34px; height: 68px; color: #f2a93b; flex: none; }
-  .rv-5 .laurel-r { transform: scaleX(-1); }
-  .rv-5 .rvh-g { display: none; }
-  .rv-5 .rvh-body { align-items: center; text-align: center; gap: 3px; }
-  .rv-5 .rvh-word { order: 3; font-size: 0.95rem; }
-  .rv-5 .rvh-line { flex-direction: column; gap: 0; }
-  .rv-5 .rvh-score { font-size: 2.6rem; line-height: 1; }
-  .rv-5 .rvh-count { order: 4; }
-
-  /* ===== One-line review headings (6-10) ===== */
-  .rv-6 .rvh-body, .rv-7 .rvh-body, .rv-8 .rvh-body, .rv-9 .rvh-body, .rv-10 .rvh-body { flex-direction: row; align-items: center; gap: 8px; white-space: nowrap; }
-  /* 6: plain line: G 5.0 stars · 140 Google reviews */
-  .rv-6 .rv-head { gap: 8px; }
-  .rv-6 .rvh-g { width: 28px; height: 28px; }
-  .rv-6 .rvh-word { display: none; }
-  .rv-6 .rvh-line { gap: 6px; }
-  .rv-6 .rvh-score { font-size: 1.3rem; }
-  .rv-6 .rvh-stars { font-size: 1.05rem; letter-spacing: 1px; }
-  .rv-6 .rvh-count { font-size: 0; }
-  .rv-6 .rvh-count::after { content: '· 140 Google reviews'; font-size: 0.92rem; color: var(--navy-800); font-weight: 700; }
-  /* 7: white pill with dividers: G Google | 5.0 stars | 140 reviews */
-  .rv-7 .rv-head { background: #fff; border: 1px solid var(--gray-200); border-radius: 999px; padding: 8px 16px 8px 10px; width: fit-content; gap: 8px;
-    box-shadow: 0 8px 22px rgba(13,32,54,0.1); }
-  .rv-7 .rvh-g { width: 24px; height: 24px; }
-  .rv-7 .rvh-reviews { display: none; }
-  .rv-7 .rvh-word { font-size: 1.05rem; padding-right: 10px; border-right: 1px solid var(--gray-200); }
-  .rv-7 .rvh-score { font-size: 1.1rem; }
-  .rv-7 .rvh-stars { font-size: 0.95rem; letter-spacing: 1px; }
-  .rv-7 .rvh-line { gap: 5px; padding-right: 10px; border-right: 1px solid var(--gray-200); }
-  .rv-7 .rvh-count { font-size: 0; }
-  .rv-7 .rvh-count::after { content: '140 reviews'; font-size: 0.82rem; }
-  /* 8: navy pill on one line */
-  .rv-8 .rv-head { background: var(--navy-900); border-radius: 999px; padding: 7px 18px 7px 7px; width: fit-content; gap: 10px; box-shadow: 0 8px 22px rgba(13,32,54,0.25); }
-  .rv-8 .rvh-g { width: 34px; height: 34px; background: #fff; border-radius: 50%; padding: 6px; box-sizing: border-box; }
-  .rv-8 .rvh-word { display: none; }
-  .rv-8 .rvh-score { color: #fff; font-size: 1.2rem; }
-  .rv-8 .rvh-stars { color: #f2a93b; font-size: 1rem; letter-spacing: 1px; }
-  .rv-8 .rvh-count { font-size: 0; }
-  .rv-8 .rvh-count::after { content: '140 Google reviews'; font-size: 0.84rem; color: rgba(255,255,255,0.8); }
-  /* 9: sentence style: Rated 5.0 stars on G Google */
-  .rv-9 .rv-head { gap: 0; }
-  .rv-9 .rvh-g { display: none; }
-  .rv-9 .rvh-line { order: 1; gap: 6px; }
-  .rv-9 .rvh-line::before { content: 'Rated'; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--navy-900); }
-  .rv-9 .rvh-score { font-size: 1.25rem; }
-  .rv-9 .rvh-stars { font-size: 1.05rem; letter-spacing: 1px; }
-  .rv-9 .rvh-word { order: 2; font-size: 1.25rem; font-weight: 800; }
-  .rv-9 .rvh-word::before { content: 'on '; color: var(--navy-900); font-weight: 700; font-size: 1.1rem; }
-  .rv-9 .gw b { font-weight: 800; }
-  .rv-9 .rvh-reviews, .rv-9 .rvh-count { display: none; }
-  /* 10: Google Reviews heading with gold rules on both sides */
-  .rv-10 .rv-head { gap: 12px; }
-  .rv-10 .rv-head::before, .rv-10 .rv-head::after { content: ''; flex: 1; max-width: 40px; height: 2px; background: linear-gradient(90deg, transparent, #f2a93b); }
-  .rv-10 .rv-head::after { background: linear-gradient(90deg, #f2a93b, transparent); }
-  .rv-10 .rvh-g { display: none; }
-  .rv-10 .rvh-word { font-size: 1.3rem; font-weight: 800; }
-  .rv-10 .gw b { font-weight: 800; }
-  .rv-10 .rvh-line { gap: 5px; }
-  .rv-10 .rvh-score { font-size: 1.3rem; }
-  .rv-10 .rvh-stars { font-size: 1rem; letter-spacing: 1px; }
-  .rv-10 .rvh-count { display: none; }
+  /* ---- Google review heading, one line: 5.0 stars · 140 Google reviews ("Google" in its colors) ---- */
+  .rv-head { display: flex; align-items: center; justify-content: center; gap: 7px; margin: 0 auto 26px; white-space: nowrap; text-decoration: none; }
+  .rvl-score { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; color: var(--navy-900); }
+  .rvl-stars { color: #FBBC05; font-size: 1.05rem; letter-spacing: 1px; }
+  .rvl-txt { font-weight: 700; font-size: 0.95rem; color: var(--navy-800); }
+  .rvl-txt .gw b { font-weight: 800; }
   @media (max-width: 370px) {
-    .rv-6 .rv-head, .rv-7 .rv-head, .rv-8 .rv-head, .rv-9 .rv-head, .rv-10 .rv-head { gap: 6px; }
-    .rv-6 .rvh-body, .rv-7 .rvh-body, .rv-8 .rvh-body, .rv-9 .rvh-body, .rv-10 .rvh-body { gap: 5px; }
-    .rv-6 .rvh-score, .rv-8 .rvh-score, .rv-9 .rvh-score, .rv-10 .rvh-score, .rv-7 .rvh-score { font-size: 1.02rem; }
-    .rv-6 .rvh-stars, .rv-7 .rvh-stars, .rv-8 .rvh-stars, .rv-9 .rvh-stars, .rv-10 .rvh-stars { font-size: 0.8rem; letter-spacing: 0; }
-    .rv-6 .rvh-count::after { font-size: 0.8rem; }
-    .rv-7 .rv-head { padding: 7px 12px 7px 8px; } .rv-7 .rvh-word { font-size: 0.92rem; padding-right: 6px; } .rv-7 .rvh-line { padding-right: 6px; }
-    .rv-7 .rvh-count::after { font-size: 0.74rem; } .rv-7 .rvh-g { width: 20px; height: 20px; }
-    .rv-8 .rv-head { padding: 6px 12px 6px 6px; } .rv-8 .rvh-g { width: 28px; height: 28px; padding: 5px; } .rv-8 .rvh-count::after { content: '140 reviews'; font-size: 0.76rem; }
-    .rv-9 .rvh-line::before { font-size: 0.95rem; } .rv-9 .rvh-word { font-size: 1.02rem; } .rv-9 .rvh-word::before { font-size: 0.92rem; }
-    .rv-10 .rvh-word { font-size: 1.05rem; } .rv-10 .rv-head::before, .rv-10 .rv-head::after { max-width: 16px; }
+    .rv-head { gap: 5px; } .rvl-score { font-size: 1.05rem; } .rvl-stars { font-size: 0.82rem; letter-spacing: 0; } .rvl-txt { font-size: 0.8rem; }
   }
+
   /* Smallest phones (iPhone SE/mini): keep the logo and Call button on one row without overflowing */
   @media (max-width: 370px) {
     .lp-header .container { padding-left: 14px; padding-right: 14px; gap: 8px; }
@@ -321,34 +212,6 @@
     .lp-header .hdr-call { font-size: 0.7rem; padding: 4px 9px 4px 4px; gap: 5px; }
   }
 
-  /* 11: one line "Real reviews from Google customers" with the G */
-  .rvh-real { display: none; }
-  .rv-11 .rv-head { gap: 8px; }
-  .rv-11 .rvh-g { width: 26px; height: 26px; }
-  .rv-11 .rvh-word, .rv-11 .rvh-line, .rv-11 .rvh-count { display: none; }
-  .rv-11 .rvh-real { display: block; white-space: nowrap; font-family: var(--font-display); font-weight: 700; color: var(--navy-900);
-    font-size: clamp(0.86rem, 4.35vw, 1.5rem); }
-  .rv-11 .rvh-real .gw b { font-weight: 800; }
-
-  /* 12-17: one-line headings in the style of 6, with/without the G, "Google" in its colors */
-  .rvl-wrap, .rvl { display: none; }
-  .rv-12 .rv-head > *:not(.rvh-body), .rv-13 .rv-head > *:not(.rvh-body), .rv-14 .rv-head > *:not(.rvh-body),
-  .rv-15 .rv-head > *:not(.rvh-body), .rv-16 .rv-head > *:not(.rvh-body), .rv-17 .rv-head > *:not(.rvh-body) { display: none; }
-  .rv-12 .rvh-body > *:not(.rvl-wrap), .rv-13 .rvh-body > *:not(.rvl-wrap), .rv-14 .rvh-body > *:not(.rvl-wrap),
-  .rv-15 .rvh-body > *:not(.rvl-wrap), .rv-16 .rvh-body > *:not(.rvl-wrap), .rv-17 .rvh-body > *:not(.rvl-wrap) { display: none; }
-  .rv-12 .rvl-wrap, .rv-13 .rvl-wrap, .rv-14 .rvl-wrap, .rv-15 .rvl-wrap, .rv-16 .rvl-wrap, .rv-17 .rvl-wrap { display: block; }
-  .rv-12 .rvl-12, .rv-13 .rvl-13, .rv-14 .rvl-14, .rv-15 .rvl-15, .rv-16 .rvl-16, .rv-17 .rvl-17 {
-    display: flex; align-items: center; justify-content: center; gap: 7px; white-space: nowrap; }
-  .rvl-g { display: inline-flex; width: 28px; height: 28px; flex: none; }
-  .rvl-score { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; color: var(--navy-900); }
-  .rvl-stars { color: #FBBC05; font-size: 1.05rem; letter-spacing: 1px; }
-  .rvl-txt { font-weight: 700; font-size: 0.95rem; color: var(--navy-800); }
-  .rvl-txt .gw b { font-weight: 800; }
-  .rvl-big { font-family: var(--font-display); font-size: 1.3rem; }
-  @media (max-width: 370px) {
-    .rvl { gap: 5px !important; } .rvl-g { width: 22px; height: 22px; } .rvl-score, .rvl-big { font-size: 1.05rem; }
-    .rvl-stars { font-size: 0.82rem; letter-spacing: 0; } .rvl-txt { font-size: 0.8rem; }
-  }
 </style>
 </head>
 <body>
@@ -392,29 +255,8 @@
 
 <section class="lp-section alt">
   <div class="container">
-    <div class="section-head sh-old">
-      <span class="eyebrow">Trusted By DFW Homeowners</span>
-      <h2 class="one-line">5.0 Stars From 140 Google Reviews</h2>
-    </div>
     <a class="rv-head" href="https://share.google/x6kMAmXlLWoU6RTqe" target="_blank" rel="noopener" aria-label="Rated 5.0 out of 5 from 140 Google reviews">
-      <svg class="laurel" viewBox="0 0 40 80" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M30 76C12 64 6 42 14 6"/></g><g fill="currentColor"><ellipse cx="13" cy="14" rx="4" ry="8" transform="rotate(-20 13 14)"/><ellipse cx="10" cy="28" rx="4" ry="8" transform="rotate(-35 10 28)"/><ellipse cx="11" cy="43" rx="4" ry="8" transform="rotate(-50 11 43)"/><ellipse cx="16" cy="57" rx="4" ry="8" transform="rotate(-65 16 57)"/><ellipse cx="24" cy="69" rx="4" ry="7.5" transform="rotate(-80 24 69)"/><ellipse cx="22" cy="20" rx="3.5" ry="7" transform="rotate(25 22 20)"/><ellipse cx="21" cy="36" rx="3.5" ry="7" transform="rotate(15 21 36)"/><ellipse cx="24" cy="51" rx="3.5" ry="7" transform="rotate(0 24 51)"/></g></svg>
-      <span class="rvh-g" aria-hidden="true"><svg width="100%" height="100%" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.5z"/></svg></span>
-      <span class="rvh-body">
-        <span class="rvh-word"><span class="gw"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span> <span class="rvh-reviews">Reviews</span></span>
-        <span class="rvh-excellent">Excellent</span>
-        <span class="rvh-line"><span class="rvh-score">5.0</span><span class="rvh-stars" aria-hidden="true">★★★★★</span></span>
-        <span class="rvh-count">Based on 140 reviews</span>
-        <span class="rvl-wrap">
-        <span class="rvl rvl-12"><span class="rvl-g" aria-hidden="true"><svg width="100%" height="100%" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.5z"/></svg></span><span class="rvl-score">5.0</span><span class="rvl-stars" aria-hidden="true">★★★★★</span><span class="rvl-txt">· 140 <span class="gw"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span> reviews</span></span>
-        <span class="rvl rvl-13"><span class="rvl-score">5.0</span><span class="rvl-stars" aria-hidden="true">★★★★★</span><span class="rvl-txt">· 140 <span class="gw"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span> reviews</span></span>
-        <span class="rvl rvl-14"><span class="rvl-g" aria-hidden="true"><svg width="100%" height="100%" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.5z"/></svg></span><span class="rvl-stars" aria-hidden="true">★★★★★</span><span class="rvl-score">5.0</span><span class="rvl-txt">on <span class="gw"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span></span></span>
-        <span class="rvl rvl-15"><span class="rvl-stars" aria-hidden="true">★★★★★</span><span class="rvl-score">5.0</span><span class="rvl-txt">on <span class="gw"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span></span></span>
-        <span class="rvl rvl-16"><span class="rvl-g" aria-hidden="true"><svg width="100%" height="100%" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.5z"/></svg></span><span class="rvl-score">5.0</span><span class="rvl-stars" aria-hidden="true">★★★★★</span><span class="rvl-txt"><span class="gw"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span> Reviews</span></span>
-        <span class="rvl rvl-17"><span class="rvl-txt rvl-big"><span class="gw"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span></span><span class="rvl-score">5.0</span><span class="rvl-stars" aria-hidden="true">★★★★★</span><span class="rvl-txt">· 140 reviews</span></span>
-        </span>
-        <span class="rvh-real">Real reviews from <span class="gw"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span> customers</span>
-      </span>
-      <svg class="laurel laurel-r" viewBox="0 0 40 80" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M30 76C12 64 6 42 14 6"/></g><g fill="currentColor"><ellipse cx="13" cy="14" rx="4" ry="8" transform="rotate(-20 13 14)"/><ellipse cx="10" cy="28" rx="4" ry="8" transform="rotate(-35 10 28)"/><ellipse cx="11" cy="43" rx="4" ry="8" transform="rotate(-50 11 43)"/><ellipse cx="16" cy="57" rx="4" ry="8" transform="rotate(-65 16 57)"/><ellipse cx="24" cy="69" rx="4" ry="7.5" transform="rotate(-80 24 69)"/><ellipse cx="22" cy="20" rx="3.5" ry="7" transform="rotate(25 22 20)"/><ellipse cx="21" cy="36" rx="3.5" ry="7" transform="rotate(15 21 36)"/><ellipse cx="24" cy="51" rx="3.5" ry="7" transform="rotate(0 24 51)"/></g></svg>
+      <span class="rvl-score">5.0</span><span class="rvl-stars" aria-hidden="true">★★★★★</span><span class="rvl-txt">· 140 <span class="gw"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span> reviews</span>
     </a>
     <div class="review-grid">
       <figure class="review-card">
