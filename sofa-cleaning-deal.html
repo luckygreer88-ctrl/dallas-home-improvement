@@ -267,17 +267,35 @@
     <div class="price-cards">
       <div class="price-card">
         <div class="pc-label">1 Sofa</div>
-        <div class="amt"><span class="cur">$</span>129</div>
+        <div class="amt"><span class="cur">$</span><span class="p1">129</span></div>
         <div class="note">Couch or loveseat</div>
       </div>
       <div class="price-card best">
         <div class="pc-ribbon">Best value</div>
         <div class="pc-label">2 Sofas</div>
-        <div class="amt"><span class="cur">$</span>199</div>
+        <div class="amt"><span class="cur">$</span><span class="p2">199</span></div>
         <div class="note">or 1 sectional</div>
       </div>
     </div>
     <p class="price-fine">A sectional counts as 2 sofas. Text us for a quick quote or with any questions.</p>
+    <script>
+      // Facebook ad prices: links ending in ?deal=fb (or &deal=fb) show $99 / $149 instead of $129 / $199.
+      // Google Ads links don't use it, so Google visitors keep $129 / $199.
+      (function () {
+        try {
+          if ((new URLSearchParams(location.search).get('deal') || '').toLowerCase() !== 'fb') return;
+          var swap = function () {
+            document.querySelectorAll('.p1').forEach(function (e) { e.textContent = '99'; });
+            document.querySelectorAll('.p2').forEach(function (e) { e.textContent = '149'; });
+            document.querySelectorAll('#lp-h1 .price').forEach(function (e) {
+              e.textContent = e.textContent.replace('$129', '$99').replace('$199', '$149');
+            });
+          };
+          swap();
+          document.addEventListener('DOMContentLoaded', swap);
+        } catch (e) {}
+      })();
+    </script>
 
   </div>
 </section>
@@ -375,7 +393,7 @@
     <div class="faq-list">
       <div class="faq-item">
         <h4>How much is a sectional?</h4>
-        <p>A sectional counts as 2 sofas, so it's $199.</p>
+        <p>A sectional counts as 2 sofas, so it's $<span class="p2">199</span>.</p>
       </div>
       <div class="faq-item">
         <h4>How long until I can use my couch?</h4>
@@ -397,7 +415,7 @@
   <div class="container">
     <div class="cta-banner">
       <div>
-        <h2>Get Your Sofa Cleaned for $129</h2>
+        <h2>Get Your Sofa Cleaned for $<span class="p1">129</span></h2>
         <p>Text us at (469) 562-1010 with questions or for a free quote.</p>
       </div>
       <div class="cta-actions">
@@ -476,7 +494,7 @@
 <form name="button-tap" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="button-tap">
   <input name="bot-field">
-  <input name="action"><input name="button"><input name="page"><input name="from_google_ads"><input name="time_dallas">
+  <input name="action"><input name="button"><input name="page"><input name="from_google_ads"><input name="came_from"><input name="time_dallas">
 </form>
 <script>
   // Send a short note to Netlify Forms when someone taps Call or Text (does not slow the tap down).
@@ -498,6 +516,8 @@
         button: where,
         page: location.pathname,
         from_google_ads: /[?&](gclid|gbraid|wbraid)=/.test(q) || /utm_source=google/i.test(q) ? 'Yes' : 'Not sure',
+        came_from: /[?&]deal=fb/i.test(q) || /[?&]fbclid=/.test(q) ? 'Facebook ad ($99/$149 prices)'
+          : /[?&](gclid|gbraid|wbraid)=/.test(q) || /utm_source=google/i.test(q) ? 'Google ad ($129/$199 prices)' : 'Not sure',
         time_dallas: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })
       });
       try {
