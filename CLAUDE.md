@@ -34,6 +34,12 @@ Read this first in any new chat about this site or the owner's ads.
 - History: the site was first uploaded by hand with Netlify Drop (Sept 2026). In Nov 2026 it was copied into this
   repo byte-for-byte and Netlify was linked to GitHub. The domain was not bought through Vercel.
 
+## Link previews (Facebook, Messenger, texts)
+- Every page has Open Graph tags. Share picture `images/og-home.jpg` (1200x630, house photo) on all pages except
+  `furniture-cleaning` and `sofa-cleaning-deal`, which use `images/og-sofa.jpg` (couch photo + FREE Fabric Protector).
+- The sofa page's share title/description name no price (Facebook visitors see $99, Google $129).
+- After changing a share picture, re-scrape in Facebook's Sharing Debugger or old previews stay cached.
+
 ## Tracking and ads
 - On every page: the **ChatGPT (OpenAI) ads pixel** `JgTd5JPQExATxXrxQ7gnjQ`.
 - **Tap alerts (sofa page):** every tap on a Call or Text button on `/sofa-cleaning-deal` posts a hidden Netlify form `button-tap` (action, which button, from Google Ads yes/not sure, Dallas time); Netlify emails it to the owner. Needs Netlify Forms > form detection ON and an email notification on that form. A tap is not a connected call.
