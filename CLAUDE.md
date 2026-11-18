@@ -35,7 +35,7 @@ Read this first in any new chat about this site or the owner's ads.
   repo byte-for-byte and Netlify was linked to GitHub. The domain was not bought through Vercel.
 
 ## Link previews (Facebook, Messenger, texts)
-- Every page has Open Graph tags. Share picture `images/og-home.jpg` (1200x630, house photo) on all pages except
+- Every page has Open Graph tags. Share picture `images/og-home.jpg` (1200x630: the owner's "A Cleaner Home, A Brighter Life" banner, fitted whole over a blurred copy of itself) on all pages except
   `furniture-cleaning` and `sofa-cleaning-deal`, which use `images/og-sofa.jpg` (couch photo + FREE Fabric Protector).
 - The sofa page's share title/description name no price (Facebook visitors see $99, Google $129).
 - After changing a share picture, re-scrape in Facebook's Sharing Debugger or old previews stay cached.
